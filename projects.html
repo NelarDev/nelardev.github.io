@@ -286,6 +286,21 @@ footer{text-align:center;font-size:0.9rem;opacity:0.7;padding:28px 0;border-top:
         </div>
       </div>
     </a>
+    
+    <!-- Aftermath Fellows -->
+    <a href="https://nacho-del-castillo.itch.io/bubblegum-royale" target="_blank">
+      <div class="project-card">
+        <img src="img/AftermathFellows.png" alt="Aftermath Fellows">
+        <div class="project-card-content">
+          <h3>Aftermath Fellows</h3>
+          <p id="desc-aftermathFellows"></p>
+          <div class="project-tags">
+            <span class="tag">Game Jam</span>
+            <span class="tag">Unity</span>
+          </div>
+        </div>
+      </div>
+    </a>
 
     <!--  Who are you again? -->
     <a href="https://paxcu.itch.io/whoareyouagain" target="_blank">
@@ -365,6 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
       descBubble: "Enfréntate a tus amigos en varios mini juegos para ver quién se hace con la victoria.",
       descGoofy: "Compite en disparatadas pruebas atléticas moviendote usando el móvil como controlador.",
       descWhoareyouagain:"Conoce la hitoria de un padre a traves de sus recuerdos.",
+      descAftermathFellows:"Lidera a los voluntarios para salvar supervivientes, reparar daños y avanzar por zonas devastadas.",
       descCarnival: "Defiende con el cañón de confeti la carroza del carnaval al ritmo de la música."
     },
     en: {
@@ -377,6 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
       descBubble: "Face off against your friends in several mini-games to see who takes the victory.",
       descGoofy: "Compete in wacky athletic challenges using your phone as a controller.",
       descWhoareyouagain:"Discover the story of a father through their memories.",
+      descAftermathFellows:"Lead the volunteers to save survivors, repair damage, and advance through devastated areas.",
       descCarnival: "Defend the carnival float with the confetti cannon to the rhythm of the music."
     }
   };
@@ -394,6 +411,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('desc-goofy').textContent = t.descGoofy;
     document.getElementById('desc-carnival').textContent = t.descCarnival;
     document.getElementById('desc-whoareyouagain').textContent = t.descWhoareyouagain;
+    document.getElementById('desc-aftermathFellows').textContent = t.descAftermathFellows;
   }
 
   const savedLang = localStorage.getItem('selectedLang') || 'es';
