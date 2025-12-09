@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Underpacked - Manuel Martín Martín</title>
+
+<!-- MISMO CSS DEL INDEX SIN CAMBIAR NADA -->
+<style>
+:root{
+  --bg:#393E4D;
+  --header-bg:#17191E;
+  --panel:#17191E;
+  --accent:#00bfff;
+  --text:#f3f4f6;
+  --radius:14px;
+  --transition:0.3s ease;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+  height:100vh;
+  padding-top:80px;
+  scroll-behavior:smooth;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background-image:url('img/Banner.png');
+  background-repeat:repeat;
+  background-size:auto;
+  opacity:0.2;
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;left:0;width:100%;
+  background:var(--header-bg);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 36px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.6);
+  z-index:1000;
+}
+header h1{font-size:1.6rem;color:var(--accent);font-weight:600;}
+
+.header-left{display:flex;align-items:center;gap:12px}
+.header-right{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+
+nav{display:flex;align-items:center;gap:18px;position:relative}
+
+.social-icons{
+  display:flex;align-items:center;gap:10px;
+}
+.social-icons a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  overflow:hidden;background:rgba(255,255,255,0.05);
+  transition:transform .25s ease,background .25s ease;
+}
+.social-icons a:hover{background:var(--accent);transform:scale(1.1)}
+.social-icons img{
+  width:30px;height:30px;
+  filter:brightness(0) invert(1);
+}
+
+/* nav */
+.nav-item{position:relative}
+.nav-link{
+  background:none;border:0;color:var(--text);font:inherit;
+  cursor:pointer;padding:8px 12px;border-radius:10px;text-decoration:none;
+  transition:background var(--transition),color var(--transition);
+}
+.nav-link:hover{background:var(--accent);color:#fff}
+
+.cv-button{
+  background:var(--accent);color:#fff;border:none;font-weight:600;
+  padding:8px 14px;border-radius:10px;cursor:pointer;
+  transition:background var(--transition),transform var(--transition);
+  text-decoration:none;
+}
+.cv-button:hover{background:#0090cc;transform:translateY(-2px)}
+
+.dropdown{
+  position:absolute;
+  top:calc(100% + 6px);
+  right:0;
+  background:var(--panel);
+  border-radius:var(--radius);
+  box-shadow:0 8px 22px rgba(0,0,0,0.45);
+  display:flex;flex-direction:column;
+  min-width:200px;z-index:1001;
+  opacity:0;transform:translateY(-8px);
+  transition:opacity .25s ease,transform .25s ease;
+  pointer-events:none;
+}
+.dropdown.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.dropdown a,.dropdown button{
+  color:var(--text);background:none;border:none;
+  padding:10px 14px;text-align:left;cursor:pointer;font:inherit;width:100%;
+}
+.dropdown a:hover,.dropdown button:hover{background:var(--accent);color:#fff}
+
+/* MAIN */
+main{
+  flex:1;width:100%;max-width:1000px;
+  margin:0 auto;padding:40px 20px;text-align:left;
+}
+
+section{width:100%;margin-bottom:60px}
+section h2{text-align:center;margin-bottom:28px;color:var(--accent);font-size:1.8rem;}
+section p{line-height:1.6;margin-bottom:20px;text-align:left;font-size:1.25rem}
+
+/* VIDEO */
+.video-container{
+  position:relative;
+  width:100%;
+  max-width:900px;
+  margin:40px auto;
+  aspect-ratio:16/9;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 26px rgba(0,0,0,0.45);
+}
+
+.video-container iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* CONTACT + FOOTER (idénticos) */
+.contact-section{
+  width:100%;max-width:800px;margin:40px auto;
+  text-align:center;background:var(--panel);
+  padding:30px 20px;border-radius:var(--radius);
+  box-shadow:0 8px 22px rgba(0,0,0,0.45);
+}
+.contact-icons{display:flex;justify-content:center;flex-wrap:wrap;gap:40px}
+.contact-item{display:flex;flex-direction:column;align-items:center;gap:10px}
+.contact-item img{width:50px;height:50px;filter:brightness(0) invert(1)}
+footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1px solid rgba(255,255,255,0.04)}
+
+/* Menu móvil */
+.menu-toggle{display:none;background:none;border:none;color:var(--accent);font-size:2rem;cursor:pointer}
+@media(max-width:768px){
+  .menu-toggle{display:block}
+  nav{display:none;flex-direction:column;width:100%;background:var(--header-bg);
+      position:absolute;top:100%;left:0;padding:14px 16px;gap:30px}
+  nav.show{display:flex}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>Manuel Martín</h1>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/nelar/" target="_blank"><img src="img/LinkedinIcon.png"></a>
+      <a href="https://nelar.itch.io/" target="_blank"><img src="img/ItchioIcon.png"></a>
+    </div>
+  </div>
+
+  <div class="header-right">
+      <button id="menu-toggle" class="menu-toggle">☰</button>
+  </div>
+
+  <nav>
+    <div class="nav-item"><a class="nav-link" href="aboutme.html">About Me</a></div>
+    <div class="nav-item"><a class="nav-link" href="skills.html">Skills</a></div>
+
+    <div class="nav-item">
+      <button id="projects-btn" class="nav-link">Proyectos ▾</button>
+      <div id="projects-dropdown" class="dropdown">
+        <a href="projects.html">Ver todos</a>
+        <a href="underpacked.html">Underpacked</a>
+        <a href="https://nacho-del-castillo.itch.io/bubblegum-royale" target="_blank">Bubble Gum Royale</a>
+        <a href="https://eddricman.itch.io/goofyathlon" target="_blank">Goofyathlon</a>
+        <a href="https://paxcu.itch.io/aftermath-fellows" target="_blank">Aftermath Fellows</a>
+        <a href="https://paxcu.itch.io/whoareyouagain" target="_blank">Who Are You Again?</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button id="lang-btn" class="nav-link">🌐 Idioma ▾</button>
+      <div id="lang-dropdown" class="dropdown">
+        <button data-lang="es">Español 🇪🇸</button>
+        <button data-lang="en">English 🇬🇧</button>
+      </div>
+    </div>
+
+    <a href="files/ManuelMartinMartinGameDesignCV.pdf" download class="cv-button">📄 CV</a>
+  </nav>
+</header>
+
+<main>
+
+  <section>
+    <h2>Underpacked</h2>
+
+    <p>
+      Underpacked es un juego co-op local donde gestionas una nave espacial, coordinas el envío de paquetes y te defiendes de amenazas mientras mantienes la cabina funcionando. Aquí puedes ver el tráiler oficial:
+    </p>
+
+    <div class="video-container">
+        <iframe 
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/Yqu8Kfay-nQ"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <p>
+      Esta página está dedicada a documentar mis aportaciones al proyecto, decisiones de diseño, sistemas implementados y el desarrollo completo del juego.
+    </p>
+  </section>
+
+</main>
+
+<section id="contact" class="contact-section">
+  <h2>Contáctame vía:</h2>
+
+  <div class="contact-icons">
+    <div class="contact-item">
+      <img src="img/GmailIcon.png">
+      <p>nelardev@gmail.com</p>
+    </div>
+
+    <div class="contact-item">
+      <a href="https://www.linkedin.com/in/nelar/" target="_blank">
+        <img src="img/LinkedinIcon.png">
+      </a>
+      <p>Manuel Martín Martín</p>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Manuel Martín Martín</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
