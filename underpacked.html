@@ -41,7 +41,7 @@ body::before{
   z-index:-1;
 }
 
-/* HEADER — IGUAL AL DE ABOUTME */
+/* HEADER */
 header{
   position:fixed;
   top:0;left:0;width:100%;
@@ -109,6 +109,7 @@ nav{display:flex;align-items:center;gap:18px}
   font-size:2rem;cursor:pointer;
 }
 
+/* TARJETAS */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -122,36 +123,133 @@ nav{display:flex;align-items:center;gap:18px}
   padding: 20px;
   border-radius: var(--radius);
   box-shadow: 0 8px 20px rgba(0,0,0,0.45);
-  flex: 1 1 280px; /* ancho mínimo y flexible */
+  flex: 1 1 280px;
   max-width: 320px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 28px rgba(0,0,0,0.5);
 }
+.card h3 { color: var(--accent); margin-bottom: 12px; }
+.card p  { font-size: 1.05rem; line-height: 1.6; }
 
-.card h3 {
-  color: var(--accent);
-  margin-bottom: 12px;
+/* ----------------------------- */
+/*   CARRUSEL – VERSIÓN FINAL    */
+/* ----------------------------- */
+
+.carousel-section {
+  margin-top: 40px;
+  margin-bottom: 60px;
 }
 
-.card p {
-  font-size: 1.05rem;
-  line-height: 1.6;
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
+.carousel-image {
+  width: 80%;
+  max-width: 900px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-btn {
+  background: rgba(255,255,255,0.06);
+  border: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .25s ease, background .25s ease;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: var(--accent);
+  transform: scale(1.08);
+}
+
+.carousel-btn img {
+  width: 55px;
+  height: 55px;
+  filter: brightness(0) invert(1);
+  transition: transform .25s ease; /* NUEVO */
+}
+
+.carousel-btn:hover img {
+  transform: scale(1.12); /* NUEVO */
+}
+
+/* Ocultar flechas móviles en escritorio */
+.carousel-arrows-mobile {
+  display: none;
+}
+
+/* Flechas de escritorio a los lados */
+.carousel-btn.left {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-btn.right {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* RESPONSIVE */
 @media(max-width:768px){
-  nav{
-    display:none;flex-direction:column;width:100%;background:var(--header-bg);
-    padding:12px 0;border-top:1px solid rgba(255,255,255,0.1);
-  }
+  nav{display:none;flex-direction:column;width:100%;background:var(--header-bg);
+    padding:12px 0;border-top:1px solid rgba(255,255,255,0.1);}
   nav.show{display:flex;}
   .menu-toggle{display:block;}
   header{flex-wrap:wrap;}
   .nav-link,.cv-button{width:100%;text-align:center;padding:12px;}
   .dropdown{position:static;box-shadow:none;background:none;padding-left:16px;}
+
+  /* Carrusel vertical */
+  .carousel-container {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Mostrar flechas móviles */
+  .carousel-arrows-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+  }
+
+  /* Ocultar flechas de escritorio */
+  .carousel-container > button {
+    display: none;
+  }
+
+  .carousel-btn {
+    width: 55px;
+    height: 55px;
+  }
+
+  .carousel-btn img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .carousel-image {
+    width: 95%;
+  }
 }
 
 main{width:100%;max-width:1100px;padding:40px 20px;}
@@ -159,19 +257,15 @@ main{width:100%;max-width:1100px;padding:40px 20px;}
 .project-flex{display:flex;gap:40px;flex-wrap:wrap;align-items:center;}
 .video-container{flex:1 1 480px;position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,0.45);}
 .video-container iframe{width:100%;height:100%;border:0;}
-.text-panel{flex:1 1 380px;background:var(--panel);padding:20px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(0,0,0,0.45);} 
-.text-panel p {
-  margin-bottom: 16px; /* espacio debajo de cada párrafo */
-  line-height: 1.6;    /* opcional: mejora la legibilidad */
-  font-size: 1.1rem;
-}
+.text-panel{flex:1 1 380px;background:var(--panel);padding:20px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(0,0,0,0.45);}
+.text-panel p{margin-bottom:16px;line-height:1.6;font-size:1.1rem;}
 
 .icon-row{display:flex;justify-content:center;gap:30px;margin:40px 0;}
 .icon-button-big{width:90px;height:90px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);transition:transform .25s ease,background .25s ease;}
-.icon-button-big:hover{background:var(--accent);transform:scale(1.08);} 
-.icon-button-big img{width:60px;height:60px;filter:brightness(0) invert(1);} 
+.icon-button-big:hover{background:var(--accent);transform:scale(1.08);}
+.icon-button-big img{width:60px;height:60px;filter:brightness(0) invert(1);}
 
-.divider{width:100%;height:6px;background:var(--header-bg);margin:40px 0;border-radius:2px;} 
+.divider{width:100%;height:6px;background:var(--header-bg);margin:40px 0;border-radius:2px;}
 
 footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1px solid rgba(255,255,255,0.04)}
 </style>
@@ -226,50 +320,59 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
 
     <div class="text-panel">
       <h2 style="color:var(--accent);margin-bottom:16px;">Underpacked</h2>
-      <p id="InfoUnderpacked" ></p>
+      <p id="InfoUnderpacked"></p>
     </div>
   </div>
 
   <div class="divider"></div>
 
 <section>
-  <h2 style="text-align:center;color:var(--accent);margin-bottom:20px;" id="title-work"></h2>
+  <h2 id="title-work" style="text-align:center;color:var(--accent);margin-bottom:20px;"></h2>
 
   <div class="cards-container">
-    <div class="card">
-      <h3 id="title-desing"></h3>
-      <p id="content-design"></p>
+    <div class="card"><h3 id="title-desing"></h3><p id="content-design"></p></div>
+    <div class="card"><h3 id="title-level-desing"></h3><p id="content-level-design"></p></div>
+    <div class="card"><h3 id="title-prototyping"></h3><p id="content-prototyping"></p></div>
+    <div class="card"><h3 id="title-documentation"></h3><p id="content-documentation"></p></div>
+    <div class="card"><h3 id="title-iteration"></h3><p id="content-iteration"></p></div>
+    <div class="card"><h3 id="title-tutorial"></h3><p id="content-tutorial"></p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="carousel-section">
+  <h2 id="title-gallery" style="text-align:center;color:var(--accent);margin-bottom:20px;"></h2>
+
+  <div class="carousel-container">
+
+    <!-- Flechas escritorio -->
+    <button class="carousel-btn left" id="carousel-prev">
+      <img src="img/ArrowLeft.png" alt="Prev">
+    </button>
+
+    <!-- Flechas móvil -->
+    <div class="carousel-arrows-mobile">
+      <button class="carousel-btn" id="carousel-prev-mobile">
+        <img src="img/ArrowLeft.png" alt="Prev">
+      </button>
+      <button class="carousel-btn" id="carousel-next-mobile">
+        <img src="img/ArrowRight.png" alt="Next">
+      </button>
     </div>
 
-    <div class="card">
-      <h3 id="title-level-desing"></h3>
-      <p id="content-level-design"></p>
-    </div>
+    <!-- Imagen -->
+    <img id="carousel-image" class="carousel-image" src="img/under1.png" alt="Imagen del juego">
 
-    <div class="card">
-      <h3 id="title-prototyping"></h3>
-      <p id="content-prototyping"></p>
-    </div>
+    <!-- Flecha escritorio -->
+    <button class="carousel-btn right" id="carousel-next">
+      <img src="img/ArrowRight.png" alt="Next">
+    </button>
 
-    <div class="card">
-      <h3 id="title-documentation"></h3>
-      <p id="content-documentation"></p>
-    </div>
-
-    <div class="card">
-      <h3 id="title-iteration"></h3>
-      <p id="content-iteration"></p>
-    </div>
-
-    <div class="card">
-      <h3 id="title-tutorial"></h3>
-      <p id="content-tutorial"></p>
-    </div>
   </div>
 </section>
 
 </main>
-
 
 <footer>© <span id="year"></span> Manuel Martín Martín</footer>
 
@@ -281,12 +384,10 @@ const menuToggle = document.getElementById('menu-toggle');
 const nav = document.querySelector('nav');
 menuToggle.addEventListener('click', () => nav.classList.toggle('show'));
 
-/* DROPDOWN DE IDIOMAS */
+/* DROPDOWN IDIOMAS */
 const langBtn = document.getElementById('lang-btn');
 const langDropdown = document.getElementById('lang-dropdown');
-
 document.addEventListener('click', () => langDropdown.classList.remove('show'));
-
 langBtn.addEventListener('click', e => {
   e.stopPropagation();
   langDropdown.classList.toggle('show');
@@ -294,7 +395,7 @@ langBtn.addEventListener('click', e => {
 
 /* IDIOMA */
 const texts = {
-    es:{ 
+es:{ 
         navHome: "Inicio",
         navAbout: "Sobre mí",
         navSkills: "Habilidades",
@@ -321,7 +422,8 @@ const texts = {
         titleIteration: "Iteración",
         contentIteration: "Tras recibir feedback de diversos playtests, analizaba los comentarios y trabajaba en ajustar y pulir el juego, eliminando fricciones y mejorando la experiencia de los jugadores.",
         titleTutorial: "Diseño del tutorial",
-        contentTutorial: "Una vez que el juego era jugable, identificamos la necesidad de un tutorial que enseñara las mecánicas de manera progresiva. Me encargué de diseñarlo e iterarlo a través de varias versiones hasta encontrar la que mejor se ajustaba a los objetivos del juego."
+        contentTutorial: "Una vez que el juego era jugable, identificamos la necesidad de un tutorial que enseñara las mecánicas de manera progresiva. Me encargué de diseñarlo e iterarlo a través de varias versiones hasta encontrar la que mejor se ajustaba a los objetivos del juego.",
+        titleGallery:"Galería"
     },
     en: {
         navHome: "Home", 
@@ -347,13 +449,14 @@ const texts = {
         titleIteration: "Iteration",
         contentIteration: "After receiving feedback from various playtests, I analyzed the comments and worked on refining and polishing the game, removing friction points and improving the overall player experience.",
         titleTutorial: "Tutorial Design",
-        contentTutorial: "Once the game was playable, we identified the need for a tutorial that would teach the mechanics progressively. I designed it and iterated on it through several versions until finding the one that best fit the game’s objectives."
+        contentTutorial: "Once the game was playable, we identified the need for a tutorial that would teach the mechanics progressively. I designed it and iterated on it through several versions until finding the one that best fit the game’s objectives.",
+        titleGallery:"Gallery"
     }
 };
 
-function setLanguage(lang) {
+function setLanguage(lang){
   localStorage.setItem('selectedLang', lang);
-  const t = texts[lang] || texts.es;
+  const t = texts[lang];
   document.getElementById('nav-home').textContent = t.navHome;
   document.getElementById('nav-about').textContent = t.navAbout;
   document.getElementById('nav-skills').textContent = t.navSkills;
@@ -364,25 +467,57 @@ function setLanguage(lang) {
   document.getElementById('title-desing').textContent = t.titleDesign;
   document.getElementById('content-design').innerHTML = t.contentDesign;
   document.getElementById('title-level-desing').textContent = t.titleLevelDesign;
-  document.getElementById('content-level-design').textContent = t.contentLevelDesign;  
+  document.getElementById('content-level-design').textContent = t.contentLevelDesign;
   document.getElementById('title-prototyping').textContent = t.titlePrototyping;
-  document.getElementById('content-prototyping').textContent = t.contentPrototyping;  
+  document.getElementById('content-prototyping').textContent = t.contentPrototyping;
   document.getElementById('title-documentation').textContent = t.titleDocumentation;
-  document.getElementById('content-documentation').textContent = t.contentDocumentation;  
+  document.getElementById('content-documentation').textContent = t.contentDocumentation;
   document.getElementById('title-iteration').textContent = t.titleIteration;
-  document.getElementById('content-iteration').textContent = t.contentIteration;  
+  document.getElementById('content-iteration').textContent = t.contentIteration;
   document.getElementById('title-tutorial').textContent = t.titleTutorial;
   document.getElementById('content-tutorial').textContent = t.contentTutorial;
+  document.getElementById('title-gallery').textContent = t.titleGallery;
 }
 
-const savedLang = localStorage.getItem('selectedLang') || 'es';
-setLanguage(savedLang);
-
-document.querySelectorAll('#lang-dropdown button').forEach(btn => {
+setLanguage(localStorage.getItem('selectedLang') || 'es');
+document.querySelectorAll('#lang-dropdown button').forEach(btn =>
   btn.addEventListener('click', () => {
     setLanguage(btn.dataset.lang);
     langDropdown.classList.remove('show');
-  });
+  })
+);
+
+/* CARRUSEL */
+const images = ["img/under1.png","img/under2.png","img/under3.png","img/under4.png"];
+let currentIndex = 0;
+const imgElement = document.getElementById("carousel-image");
+
+function updateCarousel(){
+  imgElement.style.opacity = 0;
+  setTimeout(() => {
+    imgElement.src = images[currentIndex];
+    imgElement.style.opacity = 1;
+  }, 200);
+}
+
+document.getElementById("carousel-prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateCarousel();
+});
+
+document.getElementById("carousel-next").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateCarousel();
+});
+
+document.getElementById("carousel-prev-mobile").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateCarousel();
+});
+
+document.getElementById("carousel-next-mobile").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateCarousel();
 });
 </script>
 
