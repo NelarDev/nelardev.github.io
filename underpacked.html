@@ -167,11 +167,11 @@ main{width:100%;max-width:1100px;padding:40px 20px;}
 }
 
 .icon-row{display:flex;justify-content:center;gap:30px;margin:40px 0;}
-.icon-button-big{width:70px;height:70px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);transition:transform .25s ease,background .25s ease;}
+.icon-button-big{width:90px;height:90px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);transition:transform .25s ease,background .25s ease;}
 .icon-button-big:hover{background:var(--accent);transform:scale(1.08);} 
-.icon-button-big img{width:40px;height:40px;filter:brightness(0) invert(1);} 
+.icon-button-big img{width:60px;height:60px;filter:brightness(0) invert(1);} 
 
-.divider{width:100%;height:3px;background:var(--header-bg);margin:40px 0;border-radius:2px;} 
+.divider{width:100%;height:6px;background:var(--header-bg);margin:40px 0;border-radius:2px;} 
 
 footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1px solid rgba(255,255,255,0.04)}
 </style>
@@ -233,37 +233,37 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
   <div class="divider"></div>
 
 <section>
-  <h2 style="text-align:center;color:var(--accent);margin-bottom:20px;">Mis aportaciones al proyecto</h2>
+  <h2 style="text-align:center;color:var(--accent);margin-bottom:20px;" id="title-work"></h2>
 
   <div class="cards-container">
     <div class="card">
-      <h3>Diseño de videojuegos</h3>
-      <p>Propusimos la idea inicial del juego e incorporamos mecánicas que fomentaran las dinámicas deseadas en los jugadores. Tras varios meses de prototipado, logramos que el juego se sintiera divertido y coherente.</p>
+      <h3 id="title-desing"></h3>
+      <p id="content-design"></p>
     </div>
 
     <div class="card">
-      <h3>Diseño de niveles</h3>
-      <p>Diseñé varios niveles generando nuevos desafíos y asegurando la progresión del jugador para mantener el interés a lo largo del juego.</p>
+      <h3 id="title-level-desing"></h3>
+      <p id="content-level-design"></p>
     </div>
 
     <div class="card">
-      <h3>Prototipado mediante Blueprints</h3>
-      <p>Prototipé nuevas mecánicas para comprobar su jugabilidad y ajustarlas para que fueran divertidas y funcionales.</p>
+      <h3 id="title-prototyping"></h3>
+      <p id="content-prototyping"></p>
     </div>
 
     <div class="card">
-      <h3>Documentación</h3>
-      <p>Desarrollé documentación detallada y la compartí con el equipo, resolviendo dudas y asegurando claridad en los objetivos del proyecto.</p>
+      <h3 id="title-documentation"></h3>
+      <p id="content-documentation"></p>
     </div>
 
     <div class="card">
-      <h3>Iteración</h3>
-      <p>Tras recibir feedback de playtests, ajusté y pulí el juego para mejorar la experiencia del jugador.</p>
+      <h3 id="title-iteration"></h3>
+      <p id="content-iteration"></p>
     </div>
 
     <div class="card">
-      <h3>Diseño del tutorial</h3>
-      <p>Diseñé e iteré el tutorial de manera progresiva, asegurando que enseñara todas las mecánicas de forma clara y efectiva.</p>
+      <h3 id="title-tutorial"></h3>
+      <p id="content-tutorial"></p>
     </div>
   </div>
 </section>
@@ -305,7 +305,23 @@ const texts = {
         Prepara y entrega paquetes mientras esquivas amenazas, defiendes la nave y afrontas las duras condiciones del trabajo espacial. 
         Con un estilo vibrante y caótico, ofrece una experiencia divertida centrada en la cooperación.</p>
         <p>Este proyecto ha sido desarrollado por Drunken Duck como proyecto fin de máster en Unreal Engine 5, 
-        creando una Vertical Slice desde cero junto a un equipo multidisciplinar y bajo la supervisión de profesionales de la industria.</p>`
+        creando una Vertical Slice desde cero junto a un equipo multidisciplinar y bajo la supervisión de profesionales de la industria.</p>`,
+        titleWork: "Mis aportaciones al proyecto",
+        titleDesign:"Diseño de videojuegos",
+        contentDesign: 
+        `<p>Desde el equipo de diseño, 
+        propusimos la idea inicial del juego y desarrollamos mecánicas que impulsaran las dinámicas buscadas. Tras varios meses de exploración y 
+        prototipado, logramos acabar con una vertical slice divertida.</p>`,
+        titleLevelDesign: "Diseño de niveles",
+        contentLevelDesign: "Me encargué de diseñar varios niveles, generando nuevos desafíos y asegurando que la progresión del jugador mantuviera el interés y la motivación a lo largo del juego.",
+        titlePrototyping: "Prototipado mediante Blueprints",
+        contentPrototyping: "Cada vez que queríamos probar una nueva mecánica, me ocupaba de prototiparla en Blueprints, comprobando su jugabilidad y ajustándola para garantizar que resultara divertida y funcional.",
+        titleDocumentation: "Documentación",
+        contentDocumentation: "Para que todo el equipo entendiera los requerimientos y objetivos del proyecto, desarrollé documentación detallada y me aseguré de explicarla a los demás departamentos, resolviendo dudas y manteniendo todo claro y organizado.",
+        titleIteration: "Iteración",
+        contentIteration: "Tras recibir feedback de diversos playtests, analizaba los comentarios y trabajaba en ajustar y pulir el juego, eliminando fricciones y mejorando la experiencia de los jugadores.",
+        titleTutorial: "Diseño del tutorial",
+        contentTutorial: "Una vez que el juego era jugable, identificamos la necesidad de un tutorial que enseñara las mecánicas de manera progresiva. Me encargué de diseñarlo e iterarlo a través de varias versiones hasta encontrar la que mejor se ajustaba a los objetivos del juego."
     },
     en: {
         navHome: "Home", 
@@ -317,7 +333,21 @@ const texts = {
         Prepare and deliver packages while dodging threats, defending your ship, and facing the harsh conditions 
         of space work. With a vibrant and chaotic style, it offers a fun experience focused on cooperation.</p>
         <p>This project was developed by Drunken Duck as a master’s final project in Unreal Engine 5, creating a 
-        Vertical Slice from scratch alongside a multidisciplinary team and under the supervision of industry professionals.</p>`
+        Vertical Slice from scratch alongside a multidisciplinary team and under the supervision of industry professionals.</p>`,
+        titleWork: "My contributions to the project",
+        titleDesign: "Game Design",
+        contentDesign: `<p>As part of the design team, we proposed the initial game concept and developed mechanics that supported the desired player dynamics. 
+        After several months of exploration and prototyping, we managed to deliver a fun vertical slice.</p>`,
+        titleLevelDesign: "Level Design",
+        contentLevelDesign: "I was in charge of designing several levels, creating new challenges and ensuring that the player's progression maintained interest and motivation throughout the game.",
+        titlePrototyping: "Prototyping with Blueprints",
+        contentPrototyping: "Whenever we wanted to test a new mechanic, I took charge of prototyping it in Blueprints, evaluating its playability and adjusting it to ensure it was both fun and functional.",
+        titleDocumentation: "Documentation",
+        contentDocumentation: "To make sure the entire team understood the project’s requirements and objectives, I created detailed documentation and explained it to the other departments, addressing questions and keeping everything clear and organized.",
+        titleIteration: "Iteration",
+        contentIteration: "After receiving feedback from various playtests, I analyzed the comments and worked on refining and polishing the game, removing friction points and improving the overall player experience.",
+        titleTutorial: "Tutorial Design",
+        contentTutorial: "Once the game was playable, we identified the need for a tutorial that would teach the mechanics progressively. I designed it and iterated on it through several versions until finding the one that best fit the game’s objectives."
     }
 };
 
@@ -330,6 +360,19 @@ function setLanguage(lang) {
   document.getElementById('nav-projects').textContent = t.navProjects;
   document.getElementById('lang-btn').textContent = t.langBtn;
   document.getElementById('InfoUnderpacked').innerHTML = t.infoUnderpacked;
+  document.getElementById('title-work').textContent = t.titleWork;
+  document.getElementById('title-desing').textContent = t.titleDesign;
+  document.getElementById('content-design').innerHTML = t.contentDesign;
+  document.getElementById('title-level-desing').textContent = t.titleLevelDesign;
+  document.getElementById('content-level-design').textContent = t.contentLevelDesign;  
+  document.getElementById('title-prototyping').textContent = t.titlePrototyping;
+  document.getElementById('content-prototyping').textContent = t.contentPrototyping;  
+  document.getElementById('title-documentation').textContent = t.titleDocumentation;
+  document.getElementById('content-documentation').textContent = t.contentDocumentation;  
+  document.getElementById('title-iteration').textContent = t.titleIteration;
+  document.getElementById('content-iteration').textContent = t.contentIteration;  
+  document.getElementById('title-tutorial').textContent = t.titleTutorial;
+  document.getElementById('content-tutorial').textContent = t.contentTutorial;
 }
 
 const savedLang = localStorage.getItem('selectedLang') || 'es';
