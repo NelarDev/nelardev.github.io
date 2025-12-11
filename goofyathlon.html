@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Underpacked - Manuel Martín Martín</title>
+
+<style>
+:root{
+  --bg:#393E4D;
+  --header-bg:#17191E;
+  --panel:#17191E;
+  --accent:#00bfff;
+  --text:#f3f4f6;
+  --radius:14px;
+  --transition:0.3s ease;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+  padding-top:80px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background-image:url('img/Banner.png');
+  background-repeat:repeat;
+  background-size:auto;
+  opacity:0.2;
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;left:0;width:100%;
+  background:var(--header-bg);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 36px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.6);
+  z-index:1000;
+}
+header h1{font-size:1.6rem;color:var(--accent);font-weight:600;}
+.header-left{display:flex;align-items:center;gap:12px;}
+nav{display:flex;align-items:center;gap:18px}
+
+.social-icons{display:flex;align-items:center;gap:10px;}
+.social-icons a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,0.05);
+  transition:transform .25s ease,background .25s ease;
+}
+.social-icons a:hover{background:var(--accent);transform:scale(1.1);}
+.social-icons img{width:30px;height:30px;filter:brightness(0) invert(1);}
+
+.nav-item{position:relative}
+.nav-link{
+  background:none;border:0;color:var(--text);font:inherit;
+  cursor:pointer;padding:8px 12px;border-radius:10px;
+  transition:background var(--transition),color var(--transition);
+  text-decoration:none;
+}
+.nav-link:hover{background:var(--accent);color:#fff}
+
+.cv-button{
+  background:var(--accent);color:#fff;border:none;font-weight:600;
+  padding:8px 14px;border-radius:10px;cursor:pointer;
+  transition:background var(--transition),transform var(--transition);
+  text-decoration:none;
+}
+.cv-button:hover{background:#0090cc;transform:translateY(-2px)}
+
+.dropdown{
+  position:absolute;top:110%;right:0;
+  background:var(--panel);
+  border-radius:var(--radius);
+  box-shadow:0 8px 22px rgba(0,0,0,0.45);
+  display:none;flex-direction:column;
+  min-width:200px;z-index:1001;
+  opacity:0;transform:translateY(-10px);
+  transition:opacity .25s ease,transform .25s ease;
+}
+.dropdown.show{
+  display:flex;
+  opacity:1;
+  transform:translateY(0);
+}
+.dropdown a,.dropdown button{
+  color:var(--text);text-decoration:none;background:none;border:none;
+  padding:10px 14px;text-align:left;cursor:pointer;
+}
+.dropdown a:hover,.dropdown button:hover{background:var(--accent);color:#fff}
+
+/* MENÚ MÓVIL */
+.menu-toggle{
+  display:none;background:none;border:none;color:var(--accent);
+  font-size:2rem;cursor:pointer;
+}
+
+/* TARJETAS */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+  flex: 1 1 280px;
+  max-width: 320px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+}
+.card h3 { color: var(--accent); margin-bottom: 12px; }
+.card p  { font-size: 1.05rem; line-height: 1.6; }
+
+/* ----------------------------- */
+/*   CARRUSEL – VERSIÓN FINAL    */
+/* ----------------------------- */
+
+.carousel-section {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.carousel-image {
+  width: 80%;
+  max-width: 900px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-btn {
+  background: rgba(255,255,255,0.06);
+  border: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .25s ease, background .25s ease;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: var(--accent);
+  transform: scale(1.08);
+}
+
+.carousel-btn img {
+  width: 55px;
+  height: 55px;
+  filter: brightness(0) invert(1);
+  transition: transform .25s ease; /* NUEVO */
+}
+
+.carousel-btn:hover img {
+  transform: scale(1.12); /* NUEVO */
+}
+
+/* Ocultar flechas móviles en escritorio */
+.carousel-arrows-mobile {
+  display: none;
+}
+
+/* Flechas de escritorio a los lados */
+.carousel-btn.left {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-btn.right {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{display:none;flex-direction:column;width:100%;background:var(--header-bg);
+    padding:12px 0;border-top:1px solid rgba(255,255,255,0.1);}
+  nav.show{display:flex;}
+  .menu-toggle{display:block;}
+  header{flex-wrap:wrap;}
+  .nav-link,.cv-button{width:100%;text-align:center;padding:12px;}
+  .dropdown{position:static;box-shadow:none;background:none;padding-left:16px;}
+
+  /* Carrusel vertical */
+  .carousel-container {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Mostrar flechas móviles */
+  .carousel-arrows-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+  }
+
+  /* Ocultar flechas de escritorio */
+  .carousel-container > button {
+    display: none;
+  }
+
+  .carousel-btn {
+    width: 55px;
+    height: 55px;
+  }
+
+  .carousel-btn img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .carousel-image {
+    width: 95%;
+  }
+}
+
+main{width:100%;max-width:1100px;padding:40px 20px;}
+
+.project-flex{display:flex;gap:40px;flex-wrap:wrap;align-items:center;}
+.video-container{flex:1 1 480px;position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,0.45);}
+.video-container iframe{width:100%;height:100%;border:0;}
+.text-panel{flex:1 1 380px;background:var(--panel);padding:20px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(0,0,0,0.45);}
+.text-panel p{margin-bottom:16px;line-height:1.6;font-size:1.1rem;}
+
+.icon-row{display:flex;justify-content:center;gap:30px;margin:40px 0;}
+.icon-button-big{width:90px;height:90px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);transition:transform .25s ease,background .25s ease;}
+.icon-button-big:hover{background:var(--accent);transform:scale(1.08);}
+.icon-button-big img{width:60px;height:60px;filter:brightness(0) invert(1);}
+
+.divider{width:100%;height:6px;background:var(--header-bg);margin:40px 0;border-radius:2px;}
+
+footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1px solid rgba(255,255,255,0.04)}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>Manuel Martín</h1>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/nelar/" target="_blank"><img src="img/LinkedinIcon.png"></a>
+      <a href="https://nelar.itch.io/" target="_blank"><img src="img/ItchioIcon.png"></a>
+    </div>
+  </div>
+
+  <button id="menu-toggle" class="menu-toggle">☰</button>
+
+  <nav>
+    <a id="nav-home" href="index.html" class="nav-link">Inicio</a>
+    <a id="nav-about" href="aboutme.html" class="nav-link">Sobre mí</a>
+    <a id="nav-skills" href="skills.html" class="nav-link">Habilidades</a>
+    <a id="nav-projects" href="projects.html" class="nav-link">Proyectos</a>
+
+    <div class="nav-item">
+      <button id="lang-btn" class="nav-link">🌐 Idioma ▾</button>
+      <div id="lang-dropdown" class="dropdown" aria-hidden="true">
+        <button data-lang="es">Español 🇪🇸</button>
+        <button data-lang="en">English 🇬🇧</button>
+      </div>
+    </div>
+
+    <a href="files/ManuelMartinMartinGameDesignCV.pdf" download class="cv-button">📄 CV</a>
+  </nav>
+</header>
+
+
+<main>
+
+  <div class="icon-row">
+    <a class="icon-button-big" href="https://store.steampowered.com/app/3587480/Underpacked/" target="_blank"><img src="img/SteamIcon.png"></a>
+    <a class="icon-button-big" href="https://www.tiktok.com/@drunkenduckco" target="_blank"><img src="img/TikTokIcon.png"></a>
+    <a class="icon-button-big" href="https://linktr.ee/drunkenduckco" target="_blank"><img src="img/LinktreeIcon.png"></a>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="project-flex">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/__MLnjPaMEM" allowfullscreen></iframe>
+    </div>
+
+    <div class="text-panel">
+      <h2 style="color:var(--accent);margin-bottom:16px;">Underpacked</h2>
+      <p id="InfoUnderpacked"></p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+<section>
+  <h2 id="title-work" style="text-align:center;color:var(--accent);margin-bottom:20px;"></h2>
+
+  <div class="cards-container">
+    <div class="card"><h3 id="title-desing"></h3><p id="content-design"></p></div>
+    <div class="card"><h3 id="title-level-desing"></h3><p id="content-level-design"></p></div>
+    <div class="card"><h3 id="title-prototyping"></h3><p id="content-prototyping"></p></div>
+    <div class="card"><h3 id="title-documentation"></h3><p id="content-documentation"></p></div>
+    <div class="card"><h3 id="title-iteration"></h3><p id="content-iteration"></p></div>
+    <div class="card"><h3 id="title-tutorial"></h3><p id="content-tutorial"></p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="carousel-section">
+  <h2 id="title-gallery" style="text-align:center;color:var(--accent);margin-bottom:20px;"></h2>
+
+  <div class="carousel-container">
+
+    <!-- Flechas escritorio -->
+    <button class="carousel-btn left" id="carousel-prev">
+      <img src="img/ArrowLeft.png" alt="Prev">
+    </button>
+
+    <!-- Flechas móvil -->
+    <div class="carousel-arrows-mobile">
+      <button class="carousel-btn" id="carousel-prev-mobile">
+        <img src="img/ArrowLeft.png" alt="Prev">
+      </button>
+      <button class="carousel-btn" id="carousel-next-mobile">
+        <img src="img/ArrowRight.png" alt="Next">
+      </button>
+    </div>
+
+    <!-- Imagen -->
+    <img id="carousel-image" class="carousel-image" src="img/under1.png" alt="Imagen del juego">
+
+    <!-- Flecha escritorio -->
+    <button class="carousel-btn right" id="carousel-next">
+      <img src="img/ArrowRight.png" alt="Next">
+    </button>
+
+  </div>
+</section>
+
+</main>
+
+<footer>© <span id="year"></span> Manuel Martín Martín</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* MENÚ MÓVIL */
+const menuToggle = document.getElementById('menu-toggle');
+const nav = document.querySelector('nav');
+menuToggle.addEventListener('click', () => nav.classList.toggle('show'));
+
+/* DROPDOWN IDIOMAS */
+const langBtn = document.getElementById('lang-btn');
+const langDropdown = document.getElementById('lang-dropdown');
+document.addEventListener('click', () => langDropdown.classList.remove('show'));
+langBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  langDropdown.classList.toggle('show');
+});
+
+/* IDIOMA */
+const texts = {
+es:{ 
+        navHome: "Inicio",
+        navAbout: "Sobre mí",
+        navSkills: "Habilidades",
+        navProjects: "Proyectos",
+        langBtn: "🌐 Idioma ▾",
+        infoUnderpacked: `
+        <p>Underpacked es un juego de acción cooperativa en el que trabajas para la mayor empresa de reparto de la galaxia. 
+        Prepara y entrega paquetes mientras esquivas amenazas, defiendes la nave y afrontas las duras condiciones del trabajo espacial. 
+        Con un estilo vibrante y caótico, ofrece una experiencia divertida centrada en la cooperación.</p>
+        <p>Este proyecto ha sido desarrollado por Drunken Duck como proyecto fin de máster en Unreal Engine 5, 
+        creando una Vertical Slice desde cero junto a un equipo multidisciplinar y bajo la supervisión de profesionales de la industria.</p>`,
+        titleWork: "Mis aportaciones al proyecto",
+        titleDesign:"Diseño de videojuegos",
+        contentDesign: 
+        `<p>Desde el equipo de diseño, 
+        propusimos la idea inicial del juego y desarrollamos mecánicas que impulsaran las dinámicas buscadas. Tras varios meses de exploración y 
+        prototipado, logramos acabar con una vertical slice divertida.</p>`,
+        titleLevelDesign: "Diseño de niveles",
+        contentLevelDesign: "Me encargué de diseñar varios niveles, generando nuevos desafíos y asegurando que la progresión del jugador mantuviera el interés y la motivación a lo largo del juego.",
+        titlePrototyping: "Prototipado mediante Blueprints",
+        contentPrototyping: "Cada vez que queríamos probar una nueva mecánica, me ocupaba de prototiparla en Blueprints, comprobando su jugabilidad y ajustándola para garantizar que resultara divertida y funcional.",
+        titleDocumentation: "Documentación",
+        contentDocumentation: "Para que todo el equipo entendiera los requerimientos y objetivos del proyecto, desarrollé documentación detallada y me aseguré de explicarla a los demás departamentos, resolviendo dudas y manteniendo todo claro y organizado.",
+        titleIteration: "Iteración",
+        contentIteration: "Tras recibir feedback de diversos playtests, analizaba los comentarios y trabajaba en ajustar y pulir el juego, eliminando fricciones y mejorando la experiencia de los jugadores.",
+        titleTutorial: "Diseño del tutorial",
+        contentTutorial: "Una vez que el juego era jugable, identificamos la necesidad de un tutorial que enseñara las mecánicas de manera progresiva. Me encargué de diseñarlo e iterarlo a través de varias versiones hasta encontrar la que mejor se ajustaba a los objetivos del juego.",
+        titleGallery:"Galería"
+    },
+    en: {
+        navHome: "Home", 
+        navAbout: "About me", 
+        navSkills: "Skills", navProjects: "Projects", 
+        langBtn: "🌐 Language ▾",
+        infoUnderpacked:`
+        <p>Underpacked is a cooperative action game where you work for the largest delivery company in the galaxy. 
+        Prepare and deliver packages while dodging threats, defending your ship, and facing the harsh conditions 
+        of space work. With a vibrant and chaotic style, it offers a fun experience focused on cooperation.</p>
+        <p>This project was developed by Drunken Duck as a master’s final project in Unreal Engine 5, creating a 
+        Vertical Slice from scratch alongside a multidisciplinary team and under the supervision of industry professionals.</p>`,
+        titleWork: "My contributions to the project",
+        titleDesign: "Game Design",
+        contentDesign: `<p>As part of the design team, we proposed the initial game concept and developed mechanics that supported the desired player dynamics. 
+        After several months of exploration and prototyping, we managed to deliver a fun vertical slice.</p>`,
+        titleLevelDesign: "Level Design",
+        contentLevelDesign: "I was in charge of designing several levels, creating new challenges and ensuring that the player's progression maintained interest and motivation throughout the game.",
+        titlePrototyping: "Prototyping with Blueprints",
+        contentPrototyping: "Whenever we wanted to test a new mechanic, I took charge of prototyping it in Blueprints, evaluating its playability and adjusting it to ensure it was both fun and functional.",
+        titleDocumentation: "Documentation",
+        contentDocumentation: "To make sure the entire team understood the project’s requirements and objectives, I created detailed documentation and explained it to the other departments, addressing questions and keeping everything clear and organized.",
+        titleIteration: "Iteration",
+        contentIteration: "After receiving feedback from various playtests, I analyzed the comments and worked on refining and polishing the game, removing friction points and improving the overall player experience.",
+        titleTutorial: "Tutorial Design",
+        contentTutorial: "Once the game was playable, we identified the need for a tutorial that would teach the mechanics progressively. I designed it and iterated on it through several versions until finding the one that best fit the game’s objectives.",
+        titleGallery:"Gallery"
+    }
+};
+
+function setLanguage(lang){
+  localStorage.setItem('selectedLang', lang);
+  const t = texts[lang];
+  document.getElementById('nav-home').textContent = t.navHome;
+  document.getElementById('nav-about').textContent = t.navAbout;
+  document.getElementById('nav-skills').textContent = t.navSkills;
+  document.getElementById('nav-projects').textContent = t.navProjects;
+  document.getElementById('lang-btn').textContent = t.langBtn;
+  document.getElementById('InfoUnderpacked').innerHTML = t.infoUnderpacked;
+  document.getElementById('title-work').textContent = t.titleWork;
+  document.getElementById('title-desing').textContent = t.titleDesign;
+  document.getElementById('content-design').innerHTML = t.contentDesign;
+  document.getElementById('title-level-desing').textContent = t.titleLevelDesign;
+  document.getElementById('content-level-design').textContent = t.contentLevelDesign;
+  document.getElementById('title-prototyping').textContent = t.titlePrototyping;
+  document.getElementById('content-prototyping').textContent = t.contentPrototyping;
+  document.getElementById('title-documentation').textContent = t.titleDocumentation;
+  document.getElementById('content-documentation').textContent = t.contentDocumentation;
+  document.getElementById('title-iteration').textContent = t.titleIteration;
+  document.getElementById('content-iteration').textContent = t.contentIteration;
+  document.getElementById('title-tutorial').textContent = t.titleTutorial;
+  document.getElementById('content-tutorial').textContent = t.contentTutorial;
+  document.getElementById('title-gallery').textContent = t.titleGallery;
+}
+
+setLanguage(localStorage.getItem('selectedLang') || 'es');
+document.querySelectorAll('#lang-dropdown button').forEach(btn =>
+  btn.addEventListener('click', () => {
+    setLanguage(btn.dataset.lang);
+    langDropdown.classList.remove('show');
+  })
+);
+
+/* CARRUSEL */
+const images = ["img/under1.png","img/under2.png","img/under3.png","img/under4.png"];
+let currentIndex = 0;
+const imgElement = document.getElementById("carousel-image");
+
+function updateCarousel(){
+  imgElement.style.opacity = 0;
+  setTimeout(() => {
+    imgElement.src = images[currentIndex];
+    imgElement.style.opacity = 1;
+  }, 200);
+}
+
+document.getElementById("carousel-prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateCarousel();
+});
+
+document.getElementById("carousel-next").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateCarousel();
+});
+
+document.getElementById("carousel-prev-mobile").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateCarousel();
+});
+
+document.getElementById("carousel-next-mobile").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateCarousel();
+});
+</script>
+
+</body>
+</html>
