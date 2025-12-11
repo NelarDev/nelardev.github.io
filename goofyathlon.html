@@ -319,8 +319,8 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
     </div>
 
     <div class="text-panel">
-      <h2 style="color:var(--accent);margin-bottom:16px;">Underpacked</h2>
-      <p id="InfoUnderpacked"></p>
+      <h2 style="color:var(--accent);margin-bottom:16px;">Goofy Athlon</h2>
+      <p id="info-game"></p>
     </div>
   </div>
 
@@ -362,7 +362,7 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
     </div>
 
     <!-- Imagen -->
-    <img id="carousel-image" class="carousel-image" src="img/under1.png" alt="Imagen del juego">
+    <img id="carousel-image" class="carousel-image" src="img/goofy1.png" alt="Imagen del juego">
 
     <!-- Flecha escritorio -->
     <button class="carousel-btn right" id="carousel-next">
@@ -401,12 +401,11 @@ es:{
         navSkills: "Habilidades",
         navProjects: "Proyectos",
         langBtn: "🌐 Idioma ▾",
-        infoUnderpacked: `
-        <p>Underpacked es un juego de acción cooperativa en el que trabajas para la mayor empresa de reparto de la galaxia. 
-        Prepara y entrega paquetes mientras esquivas amenazas, defiendes la nave y afrontas las duras condiciones del trabajo espacial. 
-        Con un estilo vibrante y caótico, ofrece una experiencia divertida centrada en la cooperación.</p>
-        <p>Este proyecto ha sido desarrollado por Drunken Duck como proyecto fin de máster en Unreal Engine 5, 
-        creando una Vertical Slice desde cero junto a un equipo multidisciplinar y bajo la supervisión de profesionales de la industria.</p>`,
+        infoGame: `
+        <p>Goofy Athon es un serious game diseñado para hacer que la gente se mueva mientras se divierte. 
+        Utilizas tu teléfono móvil como controlador (al estilo Wii) para superar una serie de minijuegos dinámicos. 
+        Al finalizar, una tabla de clasificación te permite competir con tus amigos y medir tu rendimiento.</p> 
+        <p>Este proyecto nació en la segunda edición de la Hackathon de Madrid in Game, donde obtuvimos el segundo premio.</p>`,
         titleWork: "Mis aportaciones al proyecto",
         titleDesign:"Diseño de videojuegos",
         contentDesign: 
@@ -430,7 +429,7 @@ es:{
         navAbout: "About me", 
         navSkills: "Skills", navProjects: "Projects", 
         langBtn: "🌐 Language ▾",
-        infoUnderpacked:`
+        infoGame:`
         <p>Underpacked is a cooperative action game where you work for the largest delivery company in the galaxy. 
         Prepare and deliver packages while dodging threats, defending your ship, and facing the harsh conditions 
         of space work. With a vibrant and chaotic style, it offers a fun experience focused on cooperation.</p>
@@ -462,7 +461,7 @@ function setLanguage(lang){
   document.getElementById('nav-skills').textContent = t.navSkills;
   document.getElementById('nav-projects').textContent = t.navProjects;
   document.getElementById('lang-btn').textContent = t.langBtn;
-  document.getElementById('InfoUnderpacked').innerHTML = t.infoUnderpacked;
+  document.getElementById('info-game').innerHTML = t.infoGame;
   document.getElementById('title-work').textContent = t.titleWork;
   document.getElementById('title-desing').textContent = t.titleDesign;
   document.getElementById('content-design').innerHTML = t.contentDesign;
@@ -488,7 +487,7 @@ document.querySelectorAll('#lang-dropdown button').forEach(btn =>
 );
 
 /* CARRUSEL */
-const images = ["img/under1.png","img/under2.png","img/under3.png","img/under4.png"];
+const images = ["img/goofy1.png","img/goofy2.png","img/goofy3.png","img/goofy4.png"];
 let currentIndex = 0;
 const imgElement = document.getElementById("carousel-image");
 
