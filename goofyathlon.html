@@ -306,9 +306,7 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
 <main>
 
   <div class="icon-row">
-    <a class="icon-button-big" href="https://store.steampowered.com/app/3587480/Underpacked/" target="_blank"><img src="img/SteamIcon.png"></a>
-    <a class="icon-button-big" href="https://www.tiktok.com/@drunkenduckco" target="_blank"><img src="img/TikTokIcon.png"></a>
-    <a class="icon-button-big" href="https://linktr.ee/drunkenduckco" target="_blank"><img src="img/LinktreeIcon.png"></a>
+    <a class="icon-button-big" href="https://eddricman.itch.io/goofyathlon" target="_blank"><img src="img/ItchioIcon.png"></a>
   </div>
 
   <div class="divider"></div>
@@ -330,12 +328,12 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
   <h2 id="title-work" style="text-align:center;color:var(--accent);margin-bottom:20px;"></h2>
 
   <div class="cards-container">
-    <div class="card"><h3 id="title-desing"></h3><p id="content-design"></p></div>
-    <div class="card"><h3 id="title-level-desing"></h3><p id="content-level-design"></p></div>
-    <div class="card"><h3 id="title-prototyping"></h3><p id="content-prototyping"></p></div>
-    <div class="card"><h3 id="title-documentation"></h3><p id="content-documentation"></p></div>
-    <div class="card"><h3 id="title-iteration"></h3><p id="content-iteration"></p></div>
-    <div class="card"><h3 id="title-tutorial"></h3><p id="content-tutorial"></p></div>
+    <div class="card"><h3 id="title-card1"></h3><p id="content-card1"></p></div>
+    <div class="card"><h3 id="title-card2"></h3><p id="content-card2"></p></div>
+    <div class="card"><h3 id="title-card3"></h3><p id="content-card3"></p></div>
+    <div class="card"><h3 id="title-card4"></h3><p id="content-card4"></p></div>
+    <!--<div class="card"><h3 id="title-card5"></h3><p id="content-card5"></p></div>
+    <div class="card"><h3 id="title-card6"></h3><p id="content-card6"></p></div>-->
   </div>
 </section>
 
@@ -407,21 +405,19 @@ es:{
         Al finalizar, una tabla de clasificación te permite competir con tus amigos y medir tu rendimiento.</p> 
         <p>Este proyecto nació en la segunda edición de la Hackathon de Madrid in Game, donde obtuvimos el segundo premio.</p>`,
         titleWork: "Mis aportaciones al proyecto",
-        titleDesign:"Diseño de videojuegos",
-        contentDesign: 
-        `<p>Desde el equipo de diseño, 
-        propusimos la idea inicial del juego y desarrollamos mecánicas que impulsaran las dinámicas buscadas. Tras varios meses de exploración y 
-        prototipado, logramos acabar con una vertical slice divertida.</p>`,
-        titleLevelDesign: "Diseño de niveles",
-        contentLevelDesign: "Me encargué de diseñar varios niveles, generando nuevos desafíos y asegurando que la progresión del jugador mantuviera el interés y la motivación a lo largo del juego.",
-        titlePrototyping: "Prototipado mediante Blueprints",
-        contentPrototyping: "Cada vez que queríamos probar una nueva mecánica, me ocupaba de prototiparla en Blueprints, comprobando su jugabilidad y ajustándola para garantizar que resultara divertida y funcional.",
-        titleDocumentation: "Documentación",
-        contentDocumentation: "Para que todo el equipo entendiera los requerimientos y objetivos del proyecto, desarrollé documentación detallada y me aseguré de explicarla a los demás departamentos, resolviendo dudas y manteniendo todo claro y organizado.",
-        titleIteration: "Iteración",
-        contentIteration: "Tras recibir feedback de diversos playtests, analizaba los comentarios y trabajaba en ajustar y pulir el juego, eliminando fricciones y mejorando la experiencia de los jugadores.",
-        titleTutorial: "Diseño del tutorial",
-        contentTutorial: "Una vez que el juego era jugable, identificamos la necesidad de un tutorial que enseñara las mecánicas de manera progresiva. Me encargué de diseñarlo e iterarlo a través de varias versiones hasta encontrar la que mejor se ajustaba a los objetivos del juego.",
+        titleCard1:"Diseño de minijuegos",
+        contentCard1: 
+        `<p>Creé varias propuestas de mecánicas y conceptos para desarrollar posteriormente los distintos minijuegos.</p>`,
+        titleCard2: "Programación de minijuegos",
+        contentCard2: "Programé varios de los minijuegos, implementando sus reglas y comportamiento general.",
+        titleCard3: "Integración de arte",
+        contentCard3: "Colaboré en la integración del arte dentro del juego, asegurando que las animaciones, elementos visuales y recursos funcionaran correctamente.",
+        titleCard4: "Organización y gestión del equipo",
+        contentCard4: "Organicé al equipo mediante un documento en Excel que incluía tareas, prioridades y seguimiento del progreso.",
+        //titlecard5: "iteración",
+        //contentcard5: "tras recibir feedback de diversos playtests, analizaba los comentarios y trabajaba en ajustar y pulir el juego, eliminando fricciones y mejorando la experiencia de los jugadores.",
+        //titlecard6: "diseño del tutorial",
+        //contentcard6: "una vez que el juego era jugable, identificamos la necesidad de un tutorial que enseñara las mecánicas de manera progresiva. me encargué de diseñarlo e iterarlo a través de varias versiones hasta encontrar la que mejor se ajustaba a los objetivos del juego.",
         titleGallery:"Galería"
     },
     en: {
@@ -430,25 +426,23 @@ es:{
         navSkills: "Skills", navProjects: "Projects", 
         langBtn: "🌐 Language ▾",
         infoGame:`
-        <p>Underpacked is a cooperative action game where you work for the largest delivery company in the galaxy. 
-        Prepare and deliver packages while dodging threats, defending your ship, and facing the harsh conditions 
-        of space work. With a vibrant and chaotic style, it offers a fun experience focused on cooperation.</p>
-        <p>This project was developed by Drunken Duck as a master’s final project in Unreal Engine 5, creating a 
-        Vertical Slice from scratch alongside a multidisciplinary team and under the supervision of industry professionals.</p>`,
+        <p>Goofy Athon is a serious game designed to get people moving while having fun. 
+        You use your smartphone as a controller (Wii-style) to complete a series of dynamic mini-games. 
+        At the end, a leaderboard lets you compete with friends and track your performance.</p>
+        <p>This project was created during the second edition of the Madrid in Game Hackathon, where we won second place.</p>`,
         titleWork: "My contributions to the project",
-        titleDesign: "Game Design",
-        contentDesign: `<p>As part of the design team, we proposed the initial game concept and developed mechanics that supported the desired player dynamics. 
-        After several months of exploration and prototyping, we managed to deliver a fun vertical slice.</p>`,
-        titleLevelDesign: "Level Design",
-        contentLevelDesign: "I was in charge of designing several levels, creating new challenges and ensuring that the player's progression maintained interest and motivation throughout the game.",
-        titlePrototyping: "Prototyping with Blueprints",
-        contentPrototyping: "Whenever we wanted to test a new mechanic, I took charge of prototyping it in Blueprints, evaluating its playability and adjusting it to ensure it was both fun and functional.",
-        titleDocumentation: "Documentation",
-        contentDocumentation: "To make sure the entire team understood the project’s requirements and objectives, I created detailed documentation and explained it to the other departments, addressing questions and keeping everything clear and organized.",
-        titleIteration: "Iteration",
-        contentIteration: "After receiving feedback from various playtests, I analyzed the comments and worked on refining and polishing the game, removing friction points and improving the overall player experience.",
-        titleTutorial: "Tutorial Design",
-        contentTutorial: "Once the game was playable, we identified the need for a tutorial that would teach the mechanics progressively. I designed it and iterated on it through several versions until finding the one that best fit the game’s objectives.",
+        titleCard1: "Minigame Design",
+        contentCard1: `<p>I created multiple gameplay concepts and mechanics to be developed into the final minigames.</p>`,
+        titleCard2: "Minigame Programming",
+        contentCard2: "I programmed several of the minigames, implementing their rules, interactions, and overall behavior.",
+        titleCard3: "Art Integration",
+        contentCard3: "I assisted in integrating the art assets into the game, ensuring animations, visuals, and resources were implemented correctly.",
+        titleCard4: "Team Organization and Management",
+        contentCard4: "I organized the team using an Excel sheet that tracked tasks, priorities, and overall progress.",
+        //titleCard5: "Iteration",
+       //contentCard5: "After receiving feedback from various playtests, I analyzed the comments and worked on refining and polishing the game, removing friction points and improving the overall player experience.",
+        //titleCard6: "Tutorial Design",
+        //contentCard6: "Once the game was playable, we identified the need for a tutorial that would teach the mechanics progressively. I designed it and iterated on it through several versions until finding the one that best fit the game’s objectives.",
         titleGallery:"Gallery"
     }
 };
@@ -463,18 +457,18 @@ function setLanguage(lang){
   document.getElementById('lang-btn').textContent = t.langBtn;
   document.getElementById('info-game').innerHTML = t.infoGame;
   document.getElementById('title-work').textContent = t.titleWork;
-  document.getElementById('title-desing').textContent = t.titleDesign;
-  document.getElementById('content-design').innerHTML = t.contentDesign;
-  document.getElementById('title-level-desing').textContent = t.titleLevelDesign;
-  document.getElementById('content-level-design').textContent = t.contentLevelDesign;
-  document.getElementById('title-prototyping').textContent = t.titlePrototyping;
-  document.getElementById('content-prototyping').textContent = t.contentPrototyping;
-  document.getElementById('title-documentation').textContent = t.titleDocumentation;
-  document.getElementById('content-documentation').textContent = t.contentDocumentation;
-  document.getElementById('title-iteration').textContent = t.titleIteration;
-  document.getElementById('content-iteration').textContent = t.contentIteration;
-  document.getElementById('title-tutorial').textContent = t.titleTutorial;
-  document.getElementById('content-tutorial').textContent = t.contentTutorial;
+  document.getElementById('title-card1').textContent = t.titleCard1;
+  document.getElementById('content-card1').innerHTML = t.contentCard1;
+  document.getElementById('title-card2').textContent = t.titleCard2;
+  document.getElementById('content-card2').textContent = t.contentCard2;
+  document.getElementById('title-card3').textContent = t.titleCard3;
+  document.getElementById('content-card3').textContent = t.contentCard3;
+  document.getElementById('title-card4').textContent = t.titleCard4;
+  document.getElementById('content-card4').textContent = t.contentCard4;
+  //document.getElementById('title-card5').textContent = t.titleCard5;
+  //document.getElementById('content-card5').textContent = t.contentCard5;
+  //document.getElementById('title-card6').textContent = t.titleCard6;
+  //document.getElementById('content-card6').textContent = t.contentCard6;
   document.getElementById('title-gallery').textContent = t.titleGallery;
 }
 
