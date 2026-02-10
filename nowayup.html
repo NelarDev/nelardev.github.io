@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Underpacked - Manuel Martín Martín</title>
+<title>No Way Up - Manuel Martín Martín</title>
 
 <style>
 :root{
@@ -112,6 +112,51 @@ nav{display:flex;align-items:center;gap:18px}
   padding:10px 14px;text-align:left;cursor:pointer;
 }
 .dropdown a:hover,.dropdown button:hover{background:var(--accent);color:#fff}
+
+/* ===== SECCIÓN PREMIOS ===== */
+
+.awards-grid {
+  display: flex;
+  justify-content: center;   /* centra las tarjetas */
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.award-card {
+  background: var(--panel);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+
+  width: 200px;      /* ancho fijo más pequeño */
+}
+
+.award-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+
+.award-card img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 12px;
+  filter: none;     
+  opacity: 1;        /* asegura color original */
+}
+
+.award-card h3 {
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.award-card p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
 
 /* MENÚ MÓVIL */
 .menu-toggle{
@@ -336,22 +381,41 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
 <main>
 
   <div class="icon-row">
-    <a class="icon-button-big" href="https://store.steampowered.com/app/3587480/Underpacked/" target="_blank"><img src="img/SteamIcon.png"></a>
-    <a class="icon-button-big" href="https://www.tiktok.com/@drunkenduckco" target="_blank"><img src="img/TikTokIcon.png"></a>
-    <a class="icon-button-big" href="https://linktr.ee/drunkenduckco" target="_blank"><img src="img/LinktreeIcon.png"></a>
+    <a class="icon-button-big" href="https://alberte-diaz.itch.io/no-way-up" target="_blank"><img src="img/ItchioIcon.png"></a>
   </div>
+
+</section>
 
   <div class="divider"></div>
 
   <div class="project-flex">
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/Yqu8Kfay-nQ" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/RtveCykoOa4?si=5I9Sp9z2L1-aH6Ca" allowfullscreen></iframe>
     </div>
 
     <div class="text-panel">
-      <h2 style="color:var(--accent);margin-bottom:16px;">Underpacked</h2>
-      <p id="InfoUnderpacked"></p>
+      <h2 style="color:var(--accent);margin-bottom:16px;">No Way Up</h2>
+      <p id="InfoGame"></p>
     </div>
+  </div>
+
+    <div class="divider"></div>
+
+<section id="awards-section">
+
+  <h2 style="text-align:center;color:var(--accent);margin-bottom:20px;" id="title-awards"></h2>
+
+  <div class="awards-grid">
+
+    <div class="award-card">
+      <img src="img/medalla.png" alt="Medalla premio">
+      <h3 id="award1"></h3>
+    </div>    
+    <div class="award-card">
+      <img src="img/medalla.png" alt="Medalla premio">
+      <h3 id="award2"></h3>
+    </div>
+
   </div>
 
   <div class="divider"></div>
@@ -362,8 +426,6 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
   <div class="cards-container">
     <div class="card"><h3 id="title-desing"></h3><p id="content-design"></p></div>
     <div class="card"><h3 id="title-level-desing"></h3><p id="content-level-design"></p></div>
-    <div class="card"><h3 id="title-prototyping"></h3><p id="content-prototyping"></p></div>
-    <div class="card"><h3 id="title-documentation"></h3><p id="content-documentation"></p></div>
     <div class="card"><h3 id="title-iteration"></h3><p id="content-iteration"></p></div>
     <div class="card"><h3 id="title-tutorial"></h3><p id="content-tutorial"></p></div>
   </div>
@@ -375,23 +437,23 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
   <h2 style="text-align:center;color:var(--accent);margin-bottom:20px;" id="tech-title"></h2>
 
   <div class="skills-grid">
-      <div class="skill-card" data-key="unreal">
-          <img src="img/unreal.png">
+      <div class="skill-card" data-key="unity">
+          <img src="img/unity.png">
           <h3></h3>
           <p></p>
       </div>
-      <div class="skill-card" data-key="blueprint">
-          <img src="img/blueprint.png">
+      <div class="skill-card" data-key="csharp">
+          <img src="img/csharp.png">
           <h3></h3>
           <p></p>
       </div>
-      <div class="skill-card" data-key="jira">
-          <img src="img/jira.png">
+      <div class="skill-card" data-key="git">
+          <img src="img/git.png">
           <h3></h3>
           <p></p>
-      </div>      
-      <div class="skill-card" data-key="perforce">
-          <img src="img/perforce.png">
+      </div>     
+      <div class="skill-card" data-key="excel">
+          <img src="img/excel.png">
           <h3></h3>
           <p></p>
       </div>
@@ -421,7 +483,7 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
     </div>
 
     <!-- Imagen -->
-    <img id="carousel-image" class="carousel-image" src="img/under1.png" alt="Imagen del juego">
+    <img id="carousel-image" class="carousel-image" src="img/sillita1.png" alt="Imagen del juego">
 
     <!-- Flecha escritorio -->
     <button class="carousel-btn right" id="carousel-next">
@@ -460,36 +522,32 @@ es:{
         navSkills: "Habilidades",
         navProjects: "Proyectos",
         langBtn: "🌐 Language ▾",
-        infoUnderpacked: `
-        <p>Underpacked es un juego de acción cooperativa en el que trabajas para la mayor empresa de reparto de la galaxia. 
-        Prepara y entrega paquetes mientras esquivas amenazas, defiendes la nave y afrontas las duras condiciones del trabajo espacial. 
-        Con un estilo vibrante y caótico, ofrece una experiencia divertida centrada en la cooperación.</p>
-        <p>Este proyecto ha sido desarrollado por Drunken Duck como proyecto fin de máster en Unreal Engine 5, 
-        creando una Vertical Slice desde cero junto a un equipo multidisciplinar y bajo la supervisión de profesionales de la industria.</p>`,
+        infoGame: `
+        <p>No Way Up es un juego cooperativo en el que dos jugadores ayudan a un amigo en silla de ruedas a avanzar por espacios públicos llenos de 
+        barreras invisibles: ascensores rotos, escaleras sin alternativa o rampas imposibles.</p>
+        <p>La coordinación, las reacciones rápidas y una física caótica convierten cada nivel en un reto muy divertido.</p>
+        <p>El juego fue desarrollado en una game jam de 48 horas, como una experiencia que mezcla humor, cooperación y una reflexión sobre la accesibilidad.</p>`,
+        titleAwards: "Premios",
+        Award1: "2º Mejor juego",
+        Award2: "Favorito del público",
         titleWork: "Mis aportaciones al proyecto",
         titleDesign:"Diseño de videojuegos",
         contentDesign: 
-        `<p>Desde el equipo de diseño, 
-        propusimos la idea inicial del juego y desarrollamos mecánicas que impulsaran las dinámicas buscadas. Tras varios meses de exploración y 
-        prototipado, logramos acabar con una vertical slice divertida.</p>`,
+        `<p>Me encargué de darle forma y sentido a la idea que decidimos en el equipo para conseguir un juego divertido y asumible en las 48h de jam.</p>`,
         titleLevelDesign: "Diseño de niveles",
-        contentLevelDesign: "Me encargué de diseñar varios niveles, generando nuevos desafíos y asegurando que la progresión del jugador mantuviera el interés y la motivación a lo largo del juego.",
-        titlePrototyping: "Prototipado mediante Blueprints",
-        contentPrototyping: "Cada vez que queríamos probar una nueva mecánica, me ocupaba de prototiparla en Blueprints, comprobando su jugabilidad y ajustándola para garantizar que resultara divertida y funcional.",
-        titleDocumentation: "Documentación",
-        contentDocumentation: "Para que todo el equipo entendiera los requerimientos y objetivos del proyecto, desarrollé documentación detallada y me aseguré de explicarla a los demás departamentos, resolviendo dudas y manteniendo todo claro y organizado.",
-        titleIteration: "Iteración",
-        contentIteration: "Tras recibir feedback de diversos playtests, analizaba los comentarios y trabajaba en ajustar y pulir el juego, eliminando fricciones y mejorando la experiencia de los jugadores.",
-        titleTutorial: "Diseño del tutorial",
-        contentTutorial: "Una vez que el juego era jugable, identificamos la necesidad de un tutorial que enseñara las mecánicas de manera progresiva. Me encargué de diseñarlo e iterarlo a través de varias versiones hasta encontrar la que mejor se ajustaba a los objetivos del juego.",
+        contentLevelDesign: "Me encargué de diseñar los niveles, generando nuevos desafíos y asegurando que la progresión del jugador mantuviera el interés y la motivación a lo largo del juego.",
+        titleIteration: "Ragdoll",
+        contentIteration: "Me ocupé de configurar y programar la activación de los ragdolls de los personajes para potenciar el impacto visual y hacer especialmente divertido verlos caer.",
+        titleTutorial: "Diseño de la cámara",
+        contentTutorial: "Me encargué de diseñar y configurar una cámara que ofreciera una buena visibilidad de los obstáculos sin sacrificar la comodidad y la claridad para el jugador.",
         titleGallery:"Galería",
 
         techTitle: "Tecnologías utilizadas",
         cards: {
-            unreal: ["Unreal 5", "Motor principal del proyecto."],
-            blueprint: ["Blueprint", "Usado para crear prototipos, efectos simples y lógica básica."],
-            jira: ["Jira", "Organización y seguimiento del equipo."],
-            perforce: ["Jira", "Organización y seguimiento del equipo."]
+            unity:["Unity","Motor principal del proyecto."],
+            csharp:["C#","Lenguaje utilizado para programar."],
+            git:["Git","Control de versiones durante el desarrollo."],
+            excel:["Excel","Gestión de tareas y prioridades del equipo."]
         }
 
     },
@@ -498,34 +556,30 @@ es:{
         navAbout: "About me", 
         navSkills: "Skills", navProjects: "Projects", 
         langBtn: "🌐 Language ▾",
-        infoUnderpacked:`
-        <p>Underpacked is a cooperative action game where you work for the largest delivery company in the galaxy. 
-        Prepare and deliver packages while dodging threats, defending your ship, and facing the harsh conditions 
-        of space work. With a vibrant and chaotic style, it offers a fun experience focused on cooperation.</p>
-        <p>This project was developed by Drunken Duck as a master’s final project in Unreal Engine 5, creating a 
-        Vertical Slice from scratch alongside a multidisciplinary team and under the supervision of industry professionals.</p>`,
+        infoGame:`
+        <p>No Way Up is a cooperative game in which two players help a friend in a wheelchair move through public spaces full of invisible barriers: broken elevators, stairways with no alternative, or impossible ramps.</p>
+        <p>Coordination, fast reactions, and chaotic physics turn each level into a highly fun challenge.</p>
+        <p>The game was developed during a 48 hour game jam as an experience that blends humor, cooperation, and a reflection on accessibility.</p>`,
+        titleAwards: "Awards",
+        Award1: "2nd Best Game",
+        Award2: "Public's Favourite",
         titleWork: "My contributions to the project",
         titleDesign: "Game Design",
-        contentDesign: `<p>As part of the design team, we proposed the initial game concept and developed mechanics that supported the desired player dynamics. 
-        After several months of exploration and prototyping, we managed to deliver a fun vertical slice.</p>`,
+        contentDesign: `<p>I was responsible for shaping and grounding the team’s idea to ensure the game was fun and achievable within the 48h jam timeframe.</p>`,
         titleLevelDesign: "Level Design",
-        contentLevelDesign: "I was in charge of designing several levels, creating new challenges and ensuring that the player's progression maintained interest and motivation throughout the game.",
-        titlePrototyping: "Prototyping with Blueprints",
-        contentPrototyping: "Whenever we wanted to test a new mechanic, I took charge of prototyping it in Blueprints, evaluating its playability and adjusting it to ensure it was both fun and functional.",
-        titleDocumentation: "Documentation",
-        contentDocumentation: "To make sure the entire team understood the project’s requirements and objectives, I created detailed documentation and explained it to the other departments, addressing questions and keeping everything clear and organized.",
-        titleIteration: "Iteration",
-        contentIteration: "After receiving feedback from various playtests, I analyzed the comments and worked on refining and polishing the game, removing friction points and improving the overall player experience.",
-        titleTutorial: "Tutorial Design",
-        contentTutorial: "Once the game was playable, we identified the need for a tutorial that would teach the mechanics progressively. I designed it and iterated on it through several versions until finding the one that best fit the game’s objectives.",
+        contentLevelDesign: "I was responsible for designing the levels, creating new challenges and ensuring that player progression maintained interest and motivation throughout the game.",
+        titleIteration: "Ragdolls",
+        contentIteration: "I was responsible for configuring and programming the activation of the characters’ ragdolls to enhance visual impact and make their falls especially fun to watch.",
+        titleTutorial: "Camera Design",
+        contentTutorial: "I was responsible for designing and configuring a camera that provided clear visibility of obstacles while remaining comfortable and readable for the player.",
         titleGallery:"Gallery",
 
         techTitle: "Technologies Used",
         cards: {
-            unreal: ["Unreal 5", "Main engine used for the project."],
-            blueprint: ["Blueprint", "Language used to program the minigames."],
-            jira: ["Jira", "Team task organization and tracking."],
-            perforce: ["Jira", "Team task organization and tracking."]
+            unity:["Unity","Main engine used for the project."],
+            csharp:["C#","Language used to program."],
+            git:["Git","Version control throughout development."],
+            excel:["Excel","Task and priority management for the team"]
         }
 
     }
@@ -539,21 +593,20 @@ function setLanguage(lang){
   document.getElementById('nav-skills').textContent = t.navSkills;
   document.getElementById('nav-projects').textContent = t.navProjects;
   document.getElementById('lang-btn').textContent = t.langBtn;
-  document.getElementById('InfoUnderpacked').innerHTML = t.infoUnderpacked;
+  document.getElementById('InfoGame').innerHTML = t.infoGame;
   document.getElementById('title-work').textContent = t.titleWork;
   document.getElementById('title-desing').textContent = t.titleDesign;
   document.getElementById('content-design').innerHTML = t.contentDesign;
   document.getElementById('title-level-desing').textContent = t.titleLevelDesign;
   document.getElementById('content-level-design').textContent = t.contentLevelDesign;
-  document.getElementById('title-prototyping').textContent = t.titlePrototyping;
-  document.getElementById('content-prototyping').textContent = t.contentPrototyping;
-  document.getElementById('title-documentation').textContent = t.titleDocumentation;
-  document.getElementById('content-documentation').textContent = t.contentDocumentation;
   document.getElementById('title-iteration').textContent = t.titleIteration;
   document.getElementById('content-iteration').textContent = t.contentIteration;
   document.getElementById('title-tutorial').textContent = t.titleTutorial;
   document.getElementById('content-tutorial').textContent = t.contentTutorial;
   document.getElementById('title-gallery').textContent = t.titleGallery;
+  document.getElementById('title-awards').textContent = t.titleAwards;
+  document.getElementById('award1').textContent = t.Award1;
+  document.getElementById('award2').textContent = t.Award2;
 
   document.getElementById('tech-title').textContent = t.techTitle;
   
@@ -576,7 +629,7 @@ document.querySelectorAll('#lang-dropdown button').forEach(btn =>
 );
 
 /* CARRUSEL */
-const images = ["img/under1.png","img/under2.png","img/under3.png","img/under4.png", "img/under5.png"];
+const images = ["img/sillita1.png","img/sillita2.png","img/sillita3.png", "img/sillita4.png", "img/sillita5.png"];
 let currentIndex = 0;
 const imgElement = document.getElementById("carousel-image");
 

@@ -57,6 +57,16 @@ header{
 }
 header h1{font-size:1.6rem;color:var(--accent);font-weight:600;}
 .header-left{display:flex;align-items:center;gap:12px;}
+.logo-link{
+  text-decoration: none;
+  color: var(--accent);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.logo-link:hover{
+  opacity: 0.8;
+  transform: scale(1.03);
+}
 nav{display:flex;align-items:center;gap:18px}
 
 /* Social Links */
@@ -387,7 +397,7 @@ footer{text-align:center;font-size:0.9rem;opacity:0.7;padding:28px 0;border-top:
 
 <header>
   <div class="header-left">
-    <h1>Manuel Martín</h1>
+    <h1><a href="index.html" class="logo-link">Manuel Martín</a></h1>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/nelar/" target="_blank"><img src="img/LinkedinIcon.png" alt="LinkedIn"></a>
       <a href="https://nelar.itch.io/" target="_blank"><img src="img/ItchioIcon.png" alt="Itch.io"></a>
@@ -607,4 +617,3 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 </body>
 </html>
-

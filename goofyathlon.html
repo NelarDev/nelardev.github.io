@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Underpacked - Manuel Martín Martín</title>
+<title>Goofy Athlon - Manuel Martín Martín</title>
 
 <style>
 :root{
@@ -53,6 +53,16 @@ header{
 }
 header h1{font-size:1.6rem;color:var(--accent);font-weight:600;}
 .header-left{display:flex;align-items:center;gap:12px;}
+.logo-link{
+  text-decoration: none;
+  color: var(--accent);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.logo-link:hover{
+  opacity: 0.8;
+  transform: scale(1.03);
+}
 nav{display:flex;align-items:center;gap:18px}
 
 .social-icons{display:flex;align-items:center;gap:10px;}
@@ -103,13 +113,11 @@ nav{display:flex;align-items:center;gap:18px}
 }
 .dropdown a:hover,.dropdown button:hover{background:var(--accent);color:#fff}
 
-/* MENÚ MÓVIL */
 .menu-toggle{
   display:none;background:none;border:none;color:var(--accent);
   font-size:2rem;cursor:pointer;
 }
 
-/* TARJETAS */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -134,10 +142,77 @@ nav{display:flex;align-items:center;gap:18px}
 .card h3 { color: var(--accent); margin-bottom: 12px; }
 .card p  { font-size: 1.05rem; line-height: 1.6; }
 
-/* ----------------------------- */
-/*   CARRUSEL – VERSIÓN FINAL    */
-/* ----------------------------- */
+/* Cards estilo skills */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
+.skill-card{
+  background:var(--panel);
+  padding:24px;
+  border-radius:var(--radius);
+  box-shadow:0 4px 14px rgba(0,0,0,0.4);
+  text-align:center;
+  transition:transform var(--transition), box-shadow var(--transition);
+}
+.skill-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 20px var(--accent);
+}
+.skill-card img{
+  width:60px;height:60px;margin-bottom:10px;
+  filter:brightness(0) invert(1);
+  opacity:0.9;
+}
 
+/* ===== SECCIÓN PREMIOS ===== */
+
+.awards-grid {
+  display: flex;
+  justify-content: center;   /* centra las tarjetas */
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.award-card {
+  background: var(--panel);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+
+  width: 200px;      /* ancho fijo más pequeño */
+}
+
+.award-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+
+.award-card img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 12px;
+  filter: none;     
+  opacity: 1;        /* asegura color original */
+}
+
+.award-card h3 {
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.award-card p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Carrusel */
 .carousel-section {
   margin-top: 40px;
   margin-bottom: 60px;
@@ -181,19 +256,17 @@ nav{display:flex;align-items:center;gap:18px}
   width: 55px;
   height: 55px;
   filter: brightness(0) invert(1);
-  transition: transform .25s ease; /* NUEVO */
+  transition: transform .25s ease;
 }
 
 .carousel-btn:hover img {
-  transform: scale(1.12); /* NUEVO */
+  transform: scale(1.12);
 }
 
-/* Ocultar flechas móviles en escritorio */
 .carousel-arrows-mobile {
   display: none;
 }
 
-/* Flechas de escritorio a los lados */
 .carousel-btn.left {
   position: absolute;
   left: 20px;
@@ -208,7 +281,6 @@ nav{display:flex;align-items:center;gap:18px}
   transform: translateY(-50%);
 }
 
-/* RESPONSIVE */
 @media(max-width:768px){
   nav{display:none;flex-direction:column;width:100%;background:var(--header-bg);
     padding:12px 0;border-top:1px solid rgba(255,255,255,0.1);}
@@ -217,39 +289,12 @@ nav{display:flex;align-items:center;gap:18px}
   header{flex-wrap:wrap;}
   .nav-link,.cv-button{width:100%;text-align:center;padding:12px;}
   .dropdown{position:static;box-shadow:none;background:none;padding-left:16px;}
-
-  /* Carrusel vertical */
-  .carousel-container {
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  /* Mostrar flechas móviles */
-  .carousel-arrows-mobile {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    width: 100%;
-  }
-
-  /* Ocultar flechas de escritorio */
-  .carousel-container > button {
-    display: none;
-  }
-
-  .carousel-btn {
-    width: 55px;
-    height: 55px;
-  }
-
-  .carousel-btn img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .carousel-image {
-    width: 95%;
-  }
+  .carousel-container{flex-direction:column;gap:18px;}
+  .carousel-arrows-mobile{display:flex;gap:18px;justify-content:center;width:100%;}
+  .carousel-container>button{display:none;}
+  .carousel-btn{width:55px;height:55px;}
+  .carousel-btn img{width:30px;height:30px;}
+  .carousel-image{width:95%;}
 }
 
 main{width:100%;max-width:1100px;padding:40px 20px;}
@@ -275,7 +320,7 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
 
 <header>
   <div class="header-left">
-    <h1>Manuel Martín</h1>
+    <h1><a href="index.html" class="logo-link">Manuel Martín</a></h1>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/nelar/" target="_blank"><img src="img/LinkedinIcon.png"></a>
       <a href="https://nelar.itch.io/" target="_blank"><img src="img/ItchioIcon.png"></a>
@@ -323,6 +368,21 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
   </div>
 
   <div class="divider"></div>
+  
+<section id="awards-section">
+
+  <h2 style="text-align:center;color:var(--accent);margin-bottom:20px;" id="title-awards"></h2>
+
+  <div class="awards-grid">
+
+    <div class="award-card">
+      <img src="img/medalla.png" alt="Medalla premio">
+      <h3 id="award1"></h3>
+    </div>    
+
+  </div>
+
+  <div class="divider"></div>
 
 <section>
   <h2 id="title-work" style="text-align:center;color:var(--accent);margin-bottom:20px;"></h2>
@@ -332,8 +392,36 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
     <div class="card"><h3 id="title-card2"></h3><p id="content-card2"></p></div>
     <div class="card"><h3 id="title-card3"></h3><p id="content-card3"></p></div>
     <div class="card"><h3 id="title-card4"></h3><p id="content-card4"></p></div>
-    <!--<div class="card"><h3 id="title-card5"></h3><p id="content-card5"></p></div>
-    <div class="card"><h3 id="title-card6"></h3><p id="content-card6"></p></div>-->
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NUEVA SECCIÓN DE TECNOLOGÍAS -->
+<section id="tech-section">
+  <h2 style="text-align:center;color:var(--accent);margin-bottom:20px;" id="tech-title"></h2>
+
+  <div class="skills-grid">
+      <div class="skill-card" data-key="unity">
+          <img src="img/unity.png">
+          <h3></h3>
+          <p></p>
+      </div>
+      <div class="skill-card" data-key="csharp">
+          <img src="img/csharp.png">
+          <h3></h3>
+          <p></p>
+      </div>
+      <div class="skill-card" data-key="git">
+          <img src="img/git.png">
+          <h3></h3>
+          <p></p>
+      </div>      
+      <div class="skill-card" data-key="excel">
+          <img src="img/excel.png">
+          <h3></h3>
+          <p></p>
+      </div>
   </div>
 </section>
 
@@ -344,12 +432,10 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
 
   <div class="carousel-container">
 
-    <!-- Flechas escritorio -->
     <button class="carousel-btn left" id="carousel-prev">
       <img src="img/ArrowLeft.png" alt="Prev">
     </button>
 
-    <!-- Flechas móvil -->
     <div class="carousel-arrows-mobile">
       <button class="carousel-btn" id="carousel-prev-mobile">
         <img src="img/ArrowLeft.png" alt="Prev">
@@ -359,10 +445,8 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
       </button>
     </div>
 
-    <!-- Imagen -->
     <img id="carousel-image" class="carousel-image" src="img/goofy1.png" alt="Imagen del juego">
 
-    <!-- Flecha escritorio -->
     <button class="carousel-btn right" id="carousel-next">
       <img src="img/ArrowRight.png" alt="Next">
     </button>
@@ -391,7 +475,7 @@ langBtn.addEventListener('click', e => {
   langDropdown.classList.toggle('show');
 });
 
-/* IDIOMA */
+/* IDIOMAS */
 const texts = {
 es:{ 
         navHome: "Inicio",
@@ -404,58 +488,74 @@ es:{
         Utilizas tu teléfono móvil como controlador (al estilo Wii) para superar una serie de minijuegos dinámicos. 
         Al finalizar, una tabla de clasificación te permite competir con tus amigos y medir tu rendimiento.</p> 
         <p>Este proyecto nació en la segunda edición de la Hackathon de Madrid in Game, donde obtuvimos el segundo premio.</p>`,
+        titleAwards: "Premios",
+        Award1: "2º Mejor Juego",
         titleWork: "Mis aportaciones al proyecto",
         titleCard1:"Diseño de minijuegos",
-        contentCard1: 
-        `<p>Creé varias propuestas de mecánicas y conceptos para desarrollar posteriormente los distintos minijuegos.</p>`,
-        titleCard2: "Programación de minijuegos",
-        contentCard2: "Programé varios de los minijuegos, implementando sus reglas y comportamiento general.",
-        titleCard3: "Integración de arte",
-        contentCard3: "Colaboré en la integración del arte dentro del juego, asegurando que las animaciones, elementos visuales y recursos funcionaran correctamente.",
-        titleCard4: "Organización y gestión del equipo",
-        contentCard4: "Organicé al equipo mediante un documento en Excel que incluía tareas, prioridades y seguimiento del progreso.",
-        //titlecard5: "iteración",
-        //contentcard5: "tras recibir feedback de diversos playtests, analizaba los comentarios y trabajaba en ajustar y pulir el juego, eliminando fricciones y mejorando la experiencia de los jugadores.",
-        //titlecard6: "diseño del tutorial",
-        //contentcard6: "una vez que el juego era jugable, identificamos la necesidad de un tutorial que enseñara las mecánicas de manera progresiva. me encargué de diseñarlo e iterarlo a través de varias versiones hasta encontrar la que mejor se ajustaba a los objetivos del juego.",
-        titleGallery:"Galería"
+        contentCard1:`Creé varias propuestas de mecánicas y conceptos para desarrollar posteriormente los distintos minijuegos.`,
+        titleCard2:"Programación de minijuegos",
+        contentCard2:"Programé varios de los minijuegos, implementando sus reglas y comportamiento general.",
+        titleCard3:"Integración de arte",
+        contentCard3:"Colaboré en la integración del arte dentro del juego, asegurando que las animaciones y elementos visuales funcionaran correctamente.",
+        titleCard4:"Organización y gestión del equipo",
+        contentCard4:"Organicé al equipo mediante un documento en Excel con tareas, prioridades y seguimiento del progreso.",
+        titleGallery:"Galería",
+
+        techTitle:"Tecnologías utilizadas",
+        techCards:{
+            unity:["Unity","Motor principal del proyecto."],
+            csharp:["C#","Lenguaje utilizado para programar los minijuegos."],
+            git:["Git","Control de versiones durante el desarrollo."],
+            excel:["Excel","Gestión de tareas y prioridades del equipo."]
+        }
     },
-    en: {
-        navHome: "Home", 
-        navAbout: "About me", 
-        navSkills: "Skills", navProjects: "Projects", 
+
+en:{
+        navHome: "Home",
+        navAbout: "About me",
+        navSkills: "Skills",
+        navProjects: "Projects",
         langBtn: "🌐 Language ▾",
-        infoGame:`
+        infoGame: `
         <p>Goofy Athon is a serious game designed to get people moving while having fun. 
         You use your smartphone as a controller (Wii-style) to complete a series of dynamic mini-games. 
         At the end, a leaderboard lets you compete with friends and track your performance.</p>
         <p>This project was created during the second edition of the Madrid in Game Hackathon, where we won second place.</p>`,
+        titleAwards: "Awards",
+        Award1: "2nd Best Game",
         titleWork: "My contributions to the project",
-        titleCard1: "Minigame Design",
-        contentCard1: `<p>I created multiple gameplay concepts and mechanics to be developed into the final minigames.</p>`,
-        titleCard2: "Minigame Programming",
-        contentCard2: "I programmed several of the minigames, implementing their rules, interactions, and overall behavior.",
-        titleCard3: "Art Integration",
-        contentCard3: "I assisted in integrating the art assets into the game, ensuring animations, visuals, and resources were implemented correctly.",
-        titleCard4: "Team Organization and Management",
-        contentCard4: "I organized the team using an Excel sheet that tracked tasks, priorities, and overall progress.",
-        //titleCard5: "Iteration",
-       //contentCard5: "After receiving feedback from various playtests, I analyzed the comments and worked on refining and polishing the game, removing friction points and improving the overall player experience.",
-        //titleCard6: "Tutorial Design",
-        //contentCard6: "Once the game was playable, we identified the need for a tutorial that would teach the mechanics progressively. I designed it and iterated on it through several versions until finding the one that best fit the game’s objectives.",
-        titleGallery:"Gallery"
+        titleCard1:"Minigame Design",
+        contentCard1:`I created several mechanic proposals and concepts for later development.`,
+        titleCard2:"Minigame Programming",
+        contentCard2:"I programmed several minigames, implementing rules and general game behavior.",
+        titleCard3:"Art Integration",
+        contentCard3:"I assisted in integrating art assets and ensuring animations and visuals worked properly.",
+        titleCard4:"Team Organization and Management",
+        contentCard4:"I managed the team using an Excel sheet with tasks, priorities and tracking.",
+        titleGallery:"Gallery",
+
+        techTitle:"Technologies used",
+        techCards:{
+            unity:["Unity","Main engine used for the project."],
+            csharp:["C#","Language used to program the minigames."],
+            git:["Git","Version control throughout development."],
+            excel:["Excel","Task and priority management for the team"]
+        }
     }
 };
 
 function setLanguage(lang){
   localStorage.setItem('selectedLang', lang);
   const t = texts[lang];
+
   document.getElementById('nav-home').textContent = t.navHome;
   document.getElementById('nav-about').textContent = t.navAbout;
   document.getElementById('nav-skills').textContent = t.navSkills;
   document.getElementById('nav-projects').textContent = t.navProjects;
   document.getElementById('lang-btn').textContent = t.langBtn;
+
   document.getElementById('info-game').innerHTML = t.infoGame;
+
   document.getElementById('title-work').textContent = t.titleWork;
   document.getElementById('title-card1').textContent = t.titleCard1;
   document.getElementById('content-card1').innerHTML = t.contentCard1;
@@ -465,14 +565,25 @@ function setLanguage(lang){
   document.getElementById('content-card3').textContent = t.contentCard3;
   document.getElementById('title-card4').textContent = t.titleCard4;
   document.getElementById('content-card4').textContent = t.contentCard4;
-  //document.getElementById('title-card5').textContent = t.titleCard5;
-  //document.getElementById('content-card5').textContent = t.contentCard5;
-  //document.getElementById('title-card6').textContent = t.titleCard6;
-  //document.getElementById('content-card6').textContent = t.contentCard6;
+  document.getElementById('title-awards').textContent = t.titleAwards;
+  document.getElementById('award1').textContent = t.Award1;
+
+  /* SECCIÓN TECNOLOGÍAS */
+  document.getElementById('tech-title').textContent = t.techTitle;
+
+  document.querySelectorAll('#tech-section .skill-card').forEach(card=>{
+      const key = card.dataset.key;
+      if(t.techCards[key]){
+          card.querySelector("h3").textContent = t.techCards[key][0];
+          card.querySelector("p").textContent  = t.techCards[key][1];
+      }
+  });
+
   document.getElementById('title-gallery').textContent = t.titleGallery;
 }
 
 setLanguage(localStorage.getItem('selectedLang') || 'es');
+
 document.querySelectorAll('#lang-dropdown button').forEach(btn =>
   btn.addEventListener('click', () => {
     setLanguage(btn.dataset.lang);
@@ -516,4 +627,3 @@ document.getElementById("carousel-next-mobile").addEventListener("click", () => 
 
 </body>
 </html>
-
