@@ -433,7 +433,8 @@ footer{text-align:center;font-size:.9rem;opacity:.7;padding:28px 0;border-top:1p
     <div class="card"><h3 id="title-desing"></h3><p id="content-design"></p></div>
     <div class="card"><h3 id="title-level-desing"></h3><p id="content-level-design"></p></div>
     <div class="card"><h3 id="title-iteration"></h3><p id="content-iteration"></p></div>
-    <div class="card"><h3 id="title-tutorial"></h3><p id="content-tutorial"></p></div>
+    <div class="card"><h3 id="title-3dmodeling"></h3><p id="content-3dmodeling"></p></div>
+    <div class="card"><h3 id="title-dressing"></h3><p id="content-dressing"></p></div>
   </div>
 </section>
 
@@ -542,15 +543,17 @@ es:{
         Award2: "1º Mejor Arte",
         Award3: "2º Mejor Diseño Narrativo",
         titleWork: "Mis aportaciones al proyecto",
-        titleDesign:"Diseño de videojuegos",
+        titleDesign:"Diseño Narrativo",
         contentDesign: 
-        `<p>Me encargué de darle forma y sentido a la idea que decidimos en el equipo para conseguir un juego divertido y asumible en las 48h de jam.</p>`,
-        titleLevelDesign: "Diseño de niveles",
-        contentLevelDesign: "Me encargué de diseñar los niveles, generando nuevos desafíos y asegurando que la progresión del jugador mantuviera el interés y la motivación a lo largo del juego.",
-        titleIteration: "Ragdoll",
-        contentIteration: "Me ocupé de configurar y programar la activación de los ragdolls de los personajes para potenciar el impacto visual y hacer especialmente divertido verlos caer.",
-        titleTutorial: "Diseño de la cámara",
-        contentTutorial: "Me encargué de diseñar y configurar una cámara que ofreciera una buena visibilidad de los obstáculos sin sacrificar la comodidad y la claridad para el jugador.",
+        `<p>Fui responsable de desarrollar y estructurar la narrativa del juego, definiendo la historia, el tono y la experiencia emocional del jugador.</p>`,
+        titleLevelDesign: "Diseño de Niveles",
+        contentLevelDesign: "Me encargué de conceptualizar y diseñar los niveles.",
+        titleIteration: "Diseño de los Puzzles",
+        contentIteration: "Diseñé los puzzles que impulsan el avance narrativo, integrándolos de manera orgánica en la jugabilidad para reforzar la experiencia del jugador.",
+        title3dModeling:"Modelado 3D y VFX",
+        content3dModeling: "Me encargué del modelado de diversos assets y de la creación e implementación de efectos visuales (VFX), contribuyendo a la calidad estética y a la inmersión del proyecto.",        
+        titleDressing:"Vestido de Niveles",
+        contentDressing: "Me encargué del level dressing, definiendo la ambientación y los detalles visuales de los niveles para reforzar la narrativa y la atmósfera del juego.",
         titleGallery:"Galería",
 
         techTitle: "Tecnologías utilizadas",
@@ -577,14 +580,16 @@ es:{
         Award2: "1st Best Art",
         Award3: "2nd Best Narrative Design",
         titleWork: "My contributions to the project",
-        titleDesign: "Game Design",
-        contentDesign: `<p>I was responsible for shaping and grounding the team’s idea to ensure the game was fun and achievable within the 48h jam timeframe.</p>`,
+        titleDesign: "Narrative Design",
+        contentDesign: `<p>I was responsible for developing and structuring the game's narrative, defining the story, tone, and the player's emotional experience.</p>`,
         titleLevelDesign: "Level Design",
-        contentLevelDesign: "I was responsible for designing the levels, creating new challenges and ensuring that player progression maintained interest and motivation throughout the game.",
-        titleIteration: "Ragdolls",
-        contentIteration: "I was responsible for configuring and programming the activation of the characters’ ragdolls to enhance visual impact and make their falls especially fun to watch.",
-        titleTutorial: "Camera Design",
-        contentTutorial: "I was responsible for designing and configuring a camera that provided clear visibility of obstacles while remaining comfortable and readable for the player.",
+        contentLevelDesign: "I was in charge of conceptualizing and designing the levels.",
+        titleIteration: "Puzzle Design",
+        contentIteration: "I designed the puzzles that drive the narrative forward, integrating them organically into the gameplay to enhance the player's experience.",
+        title3dModeling:"3D Modeling and VFX",
+        content3dModeling: "I was responsible for modeling various assets and creating and implementing visual effects (VFX), contributing to the project's visual quality and overall immersion.",
+        titleDressing:"Set Dressing",
+        contentDressing: "I was responsible for level dressing, defining the environment and visual details of the levels to reinforce the game's narrative and atmosphere.",
         titleGallery:"Gallery",
 
         techTitle: "Technologies Used",
@@ -615,9 +620,11 @@ function setLanguage(lang){
   document.getElementById('content-level-design').textContent = t.contentLevelDesign;
   document.getElementById('title-iteration').textContent = t.titleIteration;
   document.getElementById('content-iteration').textContent = t.contentIteration;
-  document.getElementById('title-tutorial').textContent = t.titleTutorial;
-  document.getElementById('content-tutorial').textContent = t.contentTutorial;
   document.getElementById('title-gallery').textContent = t.titleGallery;
+  document.getElementById('title-3dmodeling').textContent = t.title3dModeling;
+  document.getElementById('content-3dmodeling').textContent = t.content3dModeling;  
+  document.getElementById('title-dressing').textContent = t.titleDressing;
+  document.getElementById('content-dressing').textContent = t.contentDressing;
   document.getElementById('title-awards').textContent = t.titleAwards;
   document.getElementById('award1').textContent = t.Award1;
   document.getElementById('award2').textContent = t.Award2;
